@@ -1,0 +1,21 @@
+## build the docker image
+## push the docker image to docker hub
+## ssh into your VM and start the new image.
+
+name: Backend
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Build docker image
+              uses:
