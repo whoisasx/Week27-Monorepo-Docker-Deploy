@@ -25,4 +25,4 @@ jobs:
                   context: .
                   file: ./docker/Dockerfile.websocket
                   push: true
-                  tags: whoisasx/http-backend:${{github.sha}}
+                  tags: whoisasx/websocket:${{github.sha}}
