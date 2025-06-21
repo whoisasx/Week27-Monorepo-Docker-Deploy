@@ -32,4 +32,4 @@ jobs:
                   touch /home/runner/.ssh/known_hosts
                   echo "${{ secrets.VM_SSH_KEY }}" &> /home/runner/.ssh/known_hosts
                   chmod 700 /home/runner/ssh_key
-                  ssh -o StrictHostKeyChecking=no -i ~/ssh_key sadil4064@34.100.154.26 -t "docker stop http-backend && docker run --name http-backend -d -p 8080:8080 whoisasx/http-backend:${{ github.sha }}"
+                  ssh -o StrictHostKeyChecking=no -i ~/ssh_key sadil4064@34.100.154.26 -t "docker run --name http-backend -d -p 8080:8080 whoisasx/http-backend:${{ github.sha }}"
