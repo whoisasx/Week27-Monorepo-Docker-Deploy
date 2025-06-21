@@ -3,7 +3,6 @@
 ## ssh into your VM and start the new image.
 
 name: Continuous deployment (prod) Backend
-
 on:
     push:
         branches:

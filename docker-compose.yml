@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
     backend:
         build:
@@ -7,41 +5,43 @@ services:
             dockerfile: docker/Dockerfile.backend
         ports:
             - "8080:8080"
-        environment:
-            - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
         depends_on:
             - postgres
+        env_file:
+            - ./packages/db/.env
     frontend:
         build:
             context: .
             dockerfile: docker/Dockerfile.frontend
-            args:
-                - DB_URL=postgresql://postgres:postgres@postgres:5432/postgres
         ports:
             - "3000:3000"
-        environment:
-            - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
         depends_on:
             - postgres
+        command: sh -c "bun run build && bun run start:web"
+        env_file:
+            - ./packages/db/.env
     ws:
         build:
             context: .
             dockerfile: docker/Dockerfile.websocket
         ports:
             - "8081:8081"
-        environment:
-            - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
         depends_on:
             - postgres
+        env_file:
+            - ./packages/db/.env
 
     postgres:
         image: postgres
         environment:
-            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
         ports:
             - "5432:5432"
         volumes:
             - postgres_data:/var/lib/postgresql/data
+        env_file:
+            - .env
 
 volumes:
     postgres_data:
+        external: true

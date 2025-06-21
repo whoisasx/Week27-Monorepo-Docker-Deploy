@@ -1,6 +1,6 @@
 FROM oven/bun:1
 
-WORKDIR /use/src/app
+WORKDIR /use/project
 
 COPY ./packages ./packages
 COPY ./package.json ./package.json

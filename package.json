@@ -8,8 +8,8 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"check-types": "turbo run check-types",
 		"generate:db": "cd packages/db && bunx prisma generate && cd ../..",
-		"start:backend": "cd apps/backend && bun run ./apps/backend/src/index.ts",
-		"start:ws": "cd apps/websocket && bun run ./apps/websocket/src/index.ts",
+		"start:backend": "bun run apps/backend/src/index.ts",
+		"start:websocket": "bun run apps/websocket/src/index.ts",
 		"start:web": "cd apps/web && bun run start"
 	},
 	"devDependencies": {
