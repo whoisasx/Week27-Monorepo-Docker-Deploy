@@ -1,7 +1,3 @@
-## build the docker image
-## push the docker image to docker hub
-## ssh into your VM and start the new image.
-
 name: Continuous deployment (prod) Backend
 on:
     push:
